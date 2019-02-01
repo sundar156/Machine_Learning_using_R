@@ -8,6 +8,7 @@ normalize <- function(x){return ((x - min(x))/(max(x) - min(x)) )}
 super_market_normalized <- as.data.frame(lapply(super_market[,c(1,2)],normalize))
 #Step 3. Splitting the data into training and testing part
 set.seed(1235)
+?set.seed()
 training_data_size <- floor(0.70 * nrow(super_market_normalized))
 training_index <- sample(1:nrow(super_market_normalized),training_data_size)
 #Training data
@@ -22,5 +23,11 @@ test_target <- super_market[-training_index,c(3)]
 library(class)
 y_pred <- knn(train = train_data, test = test_data, cl = train_target, k = 1)
 #Step 5.Making the Confusion Matrix
+cm <- table(test_target, y_pred)
+print(cm)
+
+library(class)
+y_pred <- knn(train = train_data, test = test_data, cl = train_target, k = 3)
+#Making the Confusion Matrix
 cm <- table(test_target, y_pred)
 print(cm)

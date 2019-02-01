@@ -1,5 +1,5 @@
 #Decision Tree
-install.packages("installr")
+install.packages("C50")
 data("iris")
 # Step 1: Split the dataset into training and testing part 
 set.seed(1436) 
@@ -17,7 +17,7 @@ prediction <- predict(object = model, newdata = testing_data)
 actual_class <- testing_data$Species 
 #confusion matrix 
 addmargins(table(actual_class,prediction))
+plot(model,type="simple")
 
 version
-update.packages()
-Y
+
